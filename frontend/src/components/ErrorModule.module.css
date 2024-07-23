@@ -1,0 +1,15 @@
+img.error {
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+h1.error {
+    font-size: 32px;
+    text-align: center;
+}
+
+.error > p {
+    font-size: 22px;
+    text-align: center;
+}

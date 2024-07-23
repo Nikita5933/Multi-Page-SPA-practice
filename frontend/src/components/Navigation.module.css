@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.wrapper a.active {
+    text-decoration: underline;
+    /*color: white;*/
+}
+
+.wrapper > li a {
+    color: #890cc7;
+    font-size: 20px;
+    text-decoration: none;
+    transition: text-shadow 0.15s;
+}
+
+.wrapper > li a:hover {
+    text-shadow: white 1px 1px 22px;
+}
+
