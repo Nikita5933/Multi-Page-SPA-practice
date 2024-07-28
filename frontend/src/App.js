@@ -1,8 +1,9 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from "./pages/HomePage";
 import RootLayout from "./pages/Root";
-import About from "./components/AboutModule";
+import About, {loader as productsLoader} from "./components/AboutModule";
 import Contacts from "./components/CantactsModule";
+import ProductDetailPage, {loader as productDetailProduct} from './pages/ProductDetailPage'
 import ErrorPage from "./pages/ErrorPage";
 
 
@@ -13,7 +14,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {index: true, element: <Home />},
-      {path: 'about', element: <About />},
+      {path: 'about', element: <About />, loader: productsLoader},
+      {path: 'about/:productId', id: 'product-detail', loader: productDetailProduct, children: [
+          {
+            index: true,
+            element: <ProductDetailPage />
+          }
+        ]},
       {path: 'contacts', element: <Contacts />}
     ]
   }
