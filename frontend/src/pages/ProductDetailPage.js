@@ -1,5 +1,5 @@
 import {Suspense} from "react";
-import {Await, defer, json, useRouteLoaderData} from "react-router-dom";
+import {Await, defer, json, redirect, useRouteLoaderData} from "react-router-dom";
 import Product from "../components/Product";
 
 export default function ProductDetailPage() {
@@ -8,7 +8,6 @@ export default function ProductDetailPage() {
     <Suspense>
         <Await resolve={product}>{(product) => <Product product={product} />}</Await>
     </Suspense>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum doloribus earum, ipsum magni mollitia nisi nulla officia quas quis ratione? Delectus eligendi et illo molestias mollitia nisi pariatur ullam ut!</p>
     </>)
 }
 
@@ -41,4 +40,16 @@ export async function loader({params}) {
         products: loadProducts(),
         product: await loadProduct(id)
     })
+}
+
+export async function action({params, request}) {
+    const productId = params.productId;
+    const response = await fetch('http://localhost:8080/events/' + productId, {
+        method: request.method
+    });
+
+    if (!response.ok) {
+        throw json({message: 'could not delete event'}, {status: 500})
+    }
+    return redirect('/about');
 }

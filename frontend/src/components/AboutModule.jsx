@@ -1,6 +1,6 @@
 import classes from "./AboutModule.module.css";
 import {Suspense} from "react";
-import {Await, useLoaderData, json, defer} from "react-router-dom";
+import {Await, useLoaderData, json, defer, Link} from "react-router-dom";
 import ProductsList from "./ProductsList";
 
 export default function About() {
@@ -9,6 +9,7 @@ export default function About() {
     return (<>
         <h1 className={classes.title}>About Page</h1>
         <p className={classes.text}>List of our products</p>
+        <Link to='/new'>New Product</Link>
         <div className={classes.wrapper}>
             <Suspense>
                 <Await resolve={products}>

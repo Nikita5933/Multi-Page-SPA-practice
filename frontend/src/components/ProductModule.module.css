@@ -20,6 +20,11 @@
     align-items: center;
 
 }
+p.product  {
+    font-size: 33px;
+    color: white;
+    margin: 0 auto;
+}
 
 .product h3:hover {
     opacity: .6;

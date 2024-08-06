@@ -3,8 +3,11 @@ import Home from "./pages/HomePage";
 import RootLayout from "./pages/Root";
 import About, {loader as productsLoader} from "./components/AboutModule";
 import Contacts from "./components/CantactsModule";
-import ProductDetailPage, {loader as productDetailProduct} from './pages/ProductDetailPage'
+import ProductDetailPage, {loader as productDetailProduct, action as deleteProductAction} from './pages/ProductDetailPage';
+import {action as manipulateProductAction} from "./components/ProductForm";
 import ErrorPage from "./pages/ErrorPage";
+import NewProductPage from "./pages/NewProduct";
+import EditProductPage from "./pages/EditProductPage";
 
 
 const router = createBrowserRouter([
@@ -18,9 +21,13 @@ const router = createBrowserRouter([
       {path: 'about/:productId', id: 'product-detail', loader: productDetailProduct, children: [
           {
             index: true,
-            element: <ProductDetailPage />
-          }
+            element: <ProductDetailPage />,
+            action: deleteProductAction
+          },
+          {path: 'edit', element: <EditProductPage />, action: manipulateProductAction},
         ]},
+      {path: 'new', element: <NewProductPage />, action: manipulateProductAction},
+
       {path: 'contacts', element: <Contacts />}
     ]
   }
