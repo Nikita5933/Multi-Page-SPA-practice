@@ -1,5 +1,7 @@
 import {Form, json, redirect, useActionData, useNavigate, useNavigation} from "react-router-dom";
 
+import classes from "./ProductFormModule.module.css";
+
 export default function ProductForm({method, product}) {
     const data = useActionData();
     const navigate = useNavigate();
@@ -12,7 +14,7 @@ export default function ProductForm({method, product}) {
     }
 
     return(
-      <Form method={method}>
+      <Form className={classes.form} method={method}>
           {data && data.errors && <ul>
               {Object.values(data.errors).map(err => <li key={err}>{err}</li>)}
           </ul>}
@@ -32,7 +34,7 @@ export default function ProductForm({method, product}) {
               <label htmlFor="description">Description</label>
               <textarea rows={5} name="description" id="description" required defaultValue={product ? product.description : ''}/>
           </p>
-          <div>
+          <div className={classes.buttons}>
               <button disabled={isSubmitting} type="button" onClick={cancelHandler}>Cancel</button>
               <button disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Save'}</button>
           </div>

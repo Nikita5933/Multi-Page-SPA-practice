@@ -7,7 +7,7 @@ export default function ProductsList({products}) {
         {products.map(item => (
             <li className={classes.liProduct} key={item.id}>
             <Link to={`/about/${item.id}`}>
-               <Product product={item}/>
+               <Product front={true} product={item}/>
             </Link>
                 <div className={classes.divider}></div>
             </li>

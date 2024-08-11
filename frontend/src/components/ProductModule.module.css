@@ -26,6 +26,42 @@ p.product  {
     margin: 0 auto;
 }
 
+.product p {
+    color: #ff0000;
+    width: 100%;
+}
+
 .product h3:hover {
     opacity: .6;
+}
+
+.menu {
+    display: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.buttons button {
+    width: 200px;
+    height: 40px;
+    border-radius: 18px;
+    border: none;
+    font-size: 20px;
+    background-color: var(--color-primary-600);
+}
+
+.buttons button:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 6px var(--color-primary-600);
+    color: white;
+}
+
+.buttons button > a {
+    text-decoration: none;
+    color: black;
 }
